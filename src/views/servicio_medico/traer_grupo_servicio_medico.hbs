@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<title>Servicio Medico</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <h4>Bienvenido {{name}}</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/nuevoReporteMedico">Reporte</a>
+                    </li>
+            
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <p class="text-danger">Cerrar Sesión</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+
+        <form action="" method="post">
+            <br><br>
+            <h1 class="text-center">Elige sala</h1>
+            <div class="row justify-content-center">
+
+                <div class="form-group text-center">
+                    <label for="exampleSelect1" class="form-label mt-4">Salas</label>
+                    <select class="form-select" id="tipo" onchange="mostrarCampos(this.value)" name="idSala">
+                        {{#each userdata}}
+                        <option value="{{this.idSala}}">{{this.idSala}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="col-6 text-center">
+                    <br><br>
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <div><p>{{error}}</p></div>

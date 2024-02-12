@@ -1,0 +1,193 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<title>Trabajo Social</title>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <h4>{{name}}</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/nuevoAlumno">Nuevo Alumno</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/editarAlumno">Editar Alumno</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <p class="text-danger">Cerrar Sesión</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+    <div class="container">
+
+        <form action="" method="post">
+            <br><br>
+            <h1 class="text-center">Editar Alumno</h1>
+            <div class="row justify-content-center">
+
+                <div class="row">
+
+                    <div class="form-group text-center">
+                        <label for="exampleSelect1" class="form-label mt-4">Tallas</label>
+                        <select class="form-select" id="tipo" onchange="mostrarCampos(this.value)" name="talla"
+                            value="{{data.talla}}">
+                            <option value="P">P (Prematuro)</option>
+                            <option value="N">N (recién nacido)</option>
+                            <option value="0-3">0-3 meses</option>
+                            <option value="3-6">3-6 meses</option>
+                            <option value="6-9">6-9 meses</option>
+                            <option value="9-12">9-12 meses</option>
+                            <option value="12-18">12-18 meses</option>
+                            <option value="18-24">18-24 meses</option>
+                            <option value="2T">2T (2 años)</option>
+                            <option value="3T">3T (3 años)</option>
+                            <option value="4T">4T (4 años)</option>
+                            <option value="5T">5T (5 años)</option>
+                            <option value="6T">6T (6 años)</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="alergiasTextarea" class="form-label mt-4">Alergias</label>
+                            <textarea class="form-control" id="alergiasTextarea" rows="3" style="height: 178px;"
+                                name="alergias">{{data.alergias}}</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="enfermedadesTextarea" class="form-label mt-4">Enfermedades</label>
+                            <textarea class="form-control" id="enfermedadesTextarea" rows="3" style="height: 178px;"
+                                name="enfermedades">{{data.enfermedades}}</textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    {{!-- yo creo que lo mas conveniente es modificar tambien datos del papa que si puedan cambiar --}}
+                </div>
+
+
+
+
+                <p></p>
+                <p></p>
+                <div class="row">
+
+                    <div class="input-group mb-3">
+                        <input value="{{data.peso}}" type="text" name='peso' class="form-control" placeholder="Peso">
+                        <span class="input-group-text">Kg</span>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input value="{{data.edad}}" type="number" name='edad' class="form-control" placeholder="Edad"
+                            min="0" max="6">
+                        <span class="input-group-text">Años</span>
+                    </div>
+                </div>
+
+
+
+
+                <div class="row">
+                    <div class="form-group">
+                        <label for="formFile" class="form-label mt-4">Familiograma</label>
+                        <input value="{{data.familiograma}}" class="form-control" type="file" name='familiograma'
+                            id="formFile">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="formFile" class="form-label mt-4">Estudio Socioeconomico</label>
+                        <input value="{{data.estudioSocioeconomico}}" class="form-control" type="file"
+                            name='estudioSocioeconomico' id="formFile">
+                    </div>
+                </div>
+                <p></p><p></p>
+                            <h1 class="text-center">Editar Tutor</h1>
+
+            <div class="row">
+                <div class="col-3 text-center">
+                    <label class="col-form-label col-form-label-sm mt-4" for="nombre">Nombre(s)</label>
+                    <input class="form-control form-control-sm" type="text" id="nombre" name="tutorNombre"
+                        value="{{data.tutorNombre}}" required>
+                </div>
+                <div class="col-3 text-center">
+                    <label class="col-form-label col-form-label-sm mt-4" for="apat">Apellido Paterno</label>
+                    <input class="form-control form-control-sm" type="text" id="apat" name="tutorApPat"
+                        value="{{data.tutorApPat}}" required>
+                </div>
+                <div class="col-3 text-center">
+                    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Apellido Materno</label>
+                    <input class="form-control form-control-sm" type="text" id="inputSmall" name="tutorApMat"
+                        value="{{data.tutorApMat}}">
+                </div>
+                <div class="col-3 text-center">
+                    <label class="col-form-label col-form-label-sm mt-4" for="rfc">RFC</label>
+                    <input class="form-control form-control-sm" type="text" id="rfc" name="tutorRFC"
+                        value="{{data.tutorRFC}}" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="exampleTextarea" class="form-label mt-4">Domicilio</label>
+                    <textarea class="form-control" id="exampleTextarea" rows="3" style="height: 178px;"
+                        name="tutorDomicilio" required>{{data.tutorDomicilio}}</textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4 text-center">
+                    <label class="col-form-label col-form-label-sm mt-4" for="tel1">Teléfono 1</label>
+                    <input class="form-control form-control-sm" type="tel" id="tel1" name="tutorTel1"
+                        value="{{data.tutorTel1}}" required>
+                </div>
+                <div class="col-4 text-center">
+                    <label class="col-form-label col-form-label-sm mt-4" for="tel2">Teléfono 2</label>
+                    <input class="form-control form-control-sm" type="tel" id="tel2" name="tutorTel2"
+                        value="{{data.tutorTel2}}" required>
+                </div>
+                <div class="col-4 text-center">
+                    <label class="col-form-label col-form-label-sm mt-4" for="tel3">Teléfono 3</label>
+                    <input class="form-control form-control-sm" type="tel" id="tel3" name="tutorTel3"
+                        value="{{data.tutorTel3}}">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6 text-center">
+                    <label class="col-form-label col-form-label-sm mt-4" for="apmat">Email</label>
+                    <input class="form-control form-control-sm" type="email" id="apmat" name="tutorCorreo"
+                        value="{{data.tutorCorreo}}" required>
+                </div>
+            </div>
+
+            <div class="col-6 text-center">
+                <br><br>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </div>
+    </form>
+</div>

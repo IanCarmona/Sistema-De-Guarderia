@@ -1,0 +1,131 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+<title>Registrar</title>
+</head>
+
+<body>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <h4>Registro</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <br><br><br>
+
+    <style>
+        html,
+        body {
+            height: 87%;
+
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+
+        }
+    </style>
+
+    <div class="container">
+
+        <form action="" method="post">
+            
+            <div class="row justify-content-center">
+                <div class="row">
+                    <div class="col-3 text-center">
+                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Matricula Alumno</label>
+                        <input class="form-control form-control-sm" type="text" id="nombre" name="idAlumno" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3 text-center">
+                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Nombre(s)</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="Juan Carlos" id="nombre"
+                            name="nombre" required>
+                    </div>
+                    <div class="col-3 text-center">
+                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Apellido Paterno</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="Perez" id="apat"
+                            name="apPat" required>
+                    </div>
+                    <div class="col-3 text-center">
+                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Apellido Materno</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="Lopez" id="inputSmall"
+                            name="apMat">
+                    </div>
+                    <div class="col-3 text-center">
+                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">RFC</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="PELJ031016" id="rfc"
+                            name="rfc" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label for="exampleTextarea" class="form-label mt-4">Domicilio</label>
+                        <textarea class="form-control" id="exampleTextarea" rows="3" style="height: 178px;" name="domicilio" required></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4 text-center">
+                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Teléfono 1</label>
+                        <input class="form-control form-control-sm" type="tel" placeholder="5555555555" id="tel1"
+                            name="tel1" required>
+                    </div>
+                    <div class="col-4 text-center">
+                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Teléfono 2</label>
+                        <input class="form-control form-control-sm" type="tel" placeholder="5555555555" id="tel2"
+                            name="tel2" required>
+                    </div>
+                    <div class="col-4 text-center">
+                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Teléfono 3</label>
+                        <input class="form-control form-control-sm" type="tel" placeholder="5555555555" id="tel3"
+                            name="tel3">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Email</label>
+                        <input class="form-control form-control-sm" type="email" placeholder="juanperez@gmail.com"
+                            id="apmat" name="correo" required>
+                    </div>
+                    <div class="col-6 text-center">
+                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Contraseña</label>
+                        <input class="form-control form-control-sm" type="password" placeholder="*******" id="password"
+                            name="password" required>
+                    </div>
+
+                </div>
+
+                <div class="col-6 text-center">
+                    <br><br>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+
+            </div>
+        </form>
+    </div>

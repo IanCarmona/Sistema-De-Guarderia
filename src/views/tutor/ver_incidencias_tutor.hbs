@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<title>Nutriologo</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <h4>Bienvenido {{name}}</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/verDiaTutor">Dia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/verMenuTutor">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/verIncidenciasTutor">Incidencias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/agregarFotoTutor">Agregar Foto</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <p class="text-danger">Cerrar Sesión</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card">
+            <h1 class="text-center">Incidencias Médicas</h1>
+
+            {{#if incidencias.length}}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Doctor</th>
+                        <th>Número de Registro</th>
+                        <th>Síntomas</th>
+                        <th>Diagnóstico</th>
+                        <th>Tratamiento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each incidencias}}
+                    <tr>
+                        <td>{{fecha}}</td>
+                        <td>{{doctor}}</td>
+                        <td>{{numReg}}</td>
+                        <td>{{sintomas}}</td>
+                        <td>{{diagnostico}}</td>
+                        <td>{{tratamiento}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            {{else}}
+            <p class="text-center">No hay incidencias médicas para mostrar.</p>
+            {{/if}}
+        </div>
+    </div>

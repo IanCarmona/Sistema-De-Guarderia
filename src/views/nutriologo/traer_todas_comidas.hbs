@@ -1,0 +1,144 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<title>Nutriologo</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <h4>Bienvenido {{name}}</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crearDesayuno">Crear Desayuno</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crearComida">Crear Comida</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crearCena">Crear Merienda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/editarComidas">Editar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crearMenu">Menu</a>
+                    </li>
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <p class="text-danger">Cerrar Sesión</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        <p>{{error}}</p>
+    </div>
+
+    <style>
+        .table-hover tbody tr:hover {
+            background-color: rgba(0, 0, 0, 0.075);
+        }
+    </style>
+
+    <div class="container">
+        <h1>Desayunos</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Bebida</th>
+                    <th>Fruta</th>
+                    <th>Plato Fuerte</th>
+                    <th>Calorías</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each desayunos}}
+                <tr>
+                    <td>{{nombreDesayuno}}</td>
+                    <td>{{bebida}}</td>
+                    <td>{{fruta}}</td>
+                    <td>{{platoFuerte}}</td>
+                    <td>{{cal}}</td>
+                    <td><a href="/editarComidas/desayuno/{{nombreDesayuno}}"><img src="/img/actualizar.png"></a></td>
+                    <td><a href="/eliminarComidas/desayuno/{{nombreDesayuno}}"><img src="/img/eliminar.png"></a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <h1>Comidas</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Bebida</th>
+                    <th>Plato Fuerte</th>
+                    <th>Postre</th>
+                    <th>Calorías</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each comidas}}
+                <tr>
+                    <td>{{nombreComida}}</td>
+                    <td>{{bebida}}</td>
+                    <td>{{platoFuerte}}</td>
+                    <td>{{postre}}</td>
+                    <td>{{cal}}</td>
+                    <td><a href="/editarComidas/comida/{{nombreComida}}"><img src="/img/actualizar.png"></a></td>
+                    <td><a href="/eliminarComidas/comida/{{nombreComida}}"><img src="/img/eliminar.png"></a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <h1>Meriendas</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Bebida</th>
+                    <th>Snack</th>
+                    <th>Calorías</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each meriendas}}
+                <tr>
+                    <td>{{nombreMerienda}}</td>
+                    <td>{{bebida}}</td>
+                    <td>{{snack}}</td>
+                    <td>{{cal}}</td>
+                    <td><a href="/editarComidas/merienda/{{nombreMerienda}}"><img src="/img/actualizar.png"></a></td>
+                    <td><a href="/eliminarComidas/merienda/{{nombreMerienda}}"><img src="/img/eliminar.png"></a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>

@@ -1,0 +1,125 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<title>Cuidador</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <h4>Bienvenido {{name}}</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">Asistencia</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/asistenciaCuidador/horaEnt">Hora de Entrada</a>
+                            <a class="dropdown-item" href="/asistenciaCuidador/horaSal">Hora de Salida</a>
+
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">Comidas</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/comidasCuidador/comida1">Comida 1</a>
+                            <a class="dropdown-item" href="/comidasCuidador/comida2">Comida 2</a>
+                            <a class="dropdown-item" href="/comidasCuidador/comida3">Comida 3</a>
+
+                        </div>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/evacuacionesCuidador">Evacuaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/eventosCuidador">Eventos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <p class="text-danger">Cerrar Sesión</p>
+                        </a>
+                    </li>
+
+                    <script>
+                        // Obtener referencia a todos los enlaces del menú desplegable
+                        const dropdownLinks = document.querySelectorAll('.nav-link.dropdown-toggle');
+
+                        // Iterar sobre cada enlace del menú desplegable
+                        dropdownLinks.forEach(function (dropdownLink) {
+                            // Obtener referencia al menú desplegable asociado a cada enlace
+                            const dropdownMenu = dropdownLink.nextElementSibling;
+
+                            // Agregar un controlador de eventos a cada enlace del menú desplegable
+                            dropdownLink.addEventListener('click', function () {
+                                // Alternar la clase 'show' en el menú desplegable correspondiente
+                                dropdownMenu.classList.toggle('show');
+                            });
+                        });
+                    </script>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <br>
+    <br>
+
+    <form action="" method="post">
+        <div class="container">
+            <h1 class="text-center">Lista de Alumnos del Grupo</h1>
+            <br>
+        
+            <table class="table table-striped mt-2">
+                <thead>
+                    <tr>
+                        <th>ID Alumno</th>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th>Asistencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each alumnos}}
+                    <tr>
+                        <td>{{this.idAlumno}}</td>
+                        <td>{{this.nombre}}</td>
+                        <td>{{this.apPat}}</td>
+                        <td>{{this.apMat}}</td>
+                        <td>
+                            <input type="checkbox" name="asistenciaAlumno[]" value="{{this.idAlumno}}">
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Guardar Asistencia</button>
+            </div>
+        </div>
+    </form>
+
+
+
+    <div>
+        <p>{{error}}</p>
+    </div>

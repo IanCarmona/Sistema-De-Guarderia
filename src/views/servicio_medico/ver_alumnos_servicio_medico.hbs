@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<title>Servicio Medico</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <h4>Bienvenido {{name}}</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/nuevoReporteMedico">Reporte</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <p class="text-danger">Cerrar Sesión</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <div class="container">
+        <h1 class="text-center">Estudiantes de la sala {{idSala}}</h1>
+        <br><br>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>idAlumno</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Reporte</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each estudiantes}}
+                <tr>
+                    <td>{{this.idAlumno}}</td>
+                    <td>{{this.nombre}}</td>
+                    <td>{{this.apPat}}</td>
+                    <td>{{this.apMat}}</td>
+                    <td><a href="/crearReporteAlumno/{{this.idAlumno}}"><img src="/img/reporte.png" alt="Img de reporte"></a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>

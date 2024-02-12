@@ -1,0 +1,186 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/style_nuevo_empleado.css">
+
+<title>Nuevo Empleado</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <h4>{{name}}</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/nuevo_empleado">Nuevo Empleado</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">Editar Empleado</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/editar_empleado?tipo=capitalHumano">Capital Humano</a>
+                            <a class="dropdown-item" href="/editar_empleado?tipo=cuidador">Cuidador</a>
+                            <a class="dropdown-item" href="/editar_empleado?tipo=nutriologo">Nutriologo</a>
+                            <a class="dropdown-item" href="/editar_empleado?tipo=secretaria">Secretaria</a>
+                            <a class="dropdown-item" href="/editar_empleado?tipo=servicioMedico">Servicio Medico</a>
+                            <a class="dropdown-item" href="/editar_empleado?tipo=trabajadorSocial">Trabajo Social</a>
+                            <a class="dropdown-item" href="/editar_empleado?tipo=pedagogo">Pedagogo</a>
+                        </div>
+                    </li>
+
+                    <script>
+                        // Obtener referencia al enlace del menú desplegable
+                        const dropdownLink = document.querySelector('.nav-link.dropdown-toggle');
+
+                        // Obtener referencia al menú desplegable
+                        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+                        // Agregar un controlador de eventos al enlace del menú desplegable
+                        dropdownLink.addEventListener('click', function () {
+                            // Alternar la clase 'show' en el menú desplegable
+                            dropdownMenu.classList.toggle('show');
+                        });
+
+                    </script>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <p class="text-danger">Cerrar Sesión</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <style>
+        html,
+        body {
+            height: 87%;
+
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+
+        }
+    </style>
+
+    <div class="container">
+
+        <form action="" method="post">
+            <br><br>
+            <h1 class="text-center">Registrar Empleado</h1>
+            <div class="row justify-content-center">
+                <div class="form-group text-center">
+                    <label for="exampleSelect1" class="form-label mt-4">Tipo de Empleado</label>
+                    <select class="form-select" id="tipo" onchange="mostrarCampos(this.value)" name="tipo">
+                        <option value="capitalHumano">Capital Humano</option>
+                        <option value="trabajadorSocial">Trabajador Social</option>
+                        <option value="pedagogo">Pedagogo</option>
+                        <option value="cuidador">Cuidador</option>
+                        <option value="nutriologo">Nutriólogo</option>
+                        <option value="secretaria">Secretaria</option>
+                        <option value="servicioMedico">Servicio Médico</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-4 text-center">
+                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Nombre(s)</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="Juan Carlos" id="nombre"
+                            name="nombre" required>
+                    </div>
+                    <div class="col-4 text-center">
+                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Apellido Paterno</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="Perez" id="apat"
+                            name="apPat" required>
+                    </div>
+                    <div class="col-4 text-center">
+                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Apellido Materno</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="Lopez" id="inputSmall"
+                            name="apMat">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Email</label>
+                        <input class="form-control form-control-sm" type="email" placeholder="juanperez@gmail.com"
+                            id="apmat" name="correo" required>
+                    </div>
+                    <div class="col-6 text-center">
+                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Contraseña</label>
+                        <input class="form-control form-control-sm" type="password" placeholder="*******" id="password"
+                            name="password" required>
+                    </div>
+                    <div class="col-6 text-center">
+                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Teléfono</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="5555555555" id="tel"
+                            name="telefono" required>
+                    </div>
+                    <div class="col-6 text-center">
+                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">RFC</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="PELJ031016" id="rfc"
+                            name="rfc" required>
+                    </div>
+                </div>
+
+                <div class="col-6 text-center" id="campos_especiales">
+
+                </div>
+
+                <script>
+                    const tipo = document.getElementById('tipo');
+                    const miDiv = document.getElementById('campos_especiales');
+
+                    tipo.value = '';
+
+                    tipo.onchange = function () {
+                        if (tipo.value === 'servicioMedico' || tipo.value === 'nutriologo' || tipo.value === '') {
+                            miDiv.style.display = 'block';
+
+                            const htmlContent = `
+                            
+                                <div class="form-group">
+                                <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Cedula Profesional</label>
+                                <input class="form-control form-control-sm" type="text" placeholder="*********" id="cedula" name="cedulaProfesional" required>
+                                </div>
+                            
+                            `;
+
+                            miDiv.innerHTML = htmlContent;
+                        } else {
+                            miDiv.innerHTML = '';
+                            miDiv.style.display = 'none';
+                        }
+                    };
+
+                </script>
+
+
+                <div class="col-6 text-center">
+                    <br><br>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+
+
+
+
+
+            </div>
+        </form>
+    </div>

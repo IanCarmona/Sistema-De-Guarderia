@@ -1,0 +1,117 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<title>Nutriologo</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <h4>Bienvenido {{name}}</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crearDesayuno">Crear Desayuno</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crearComida">Crear Comida</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crearCena">Crear Merienda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/editarComidas">Editar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crearMenu">Menu</a>
+                    </li>
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <p class="text-danger">Cerrar Sesión</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <label for="desayuno">Desayuno:</label>
+                        <select class="form-control" name="desayuno" required>
+                            {{#each desayunos}}
+                            <option value="{{this.nombre}}">{{this.nombre}} tiene {{this.calorias}} cal</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comida">Comida:</label>
+                        <select class="form-control" name="comida" required>
+                            {{#each comidas}}
+                            <option value="{{this.nombre}}">{{this.nombre}} tiene {{this.calorias}} cal</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="merienda">Merienda:</label>
+                        <select class="form-control" name="merienda" required>
+                            {{#each meriendas}}
+                            <option value="{{this.nombre}}">{{this.nombre}} tiene {{this.calorias}} cal</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nutriologo">Nutriólogo:</label>
+                        <input type="text" class="form-control" name="nutriologo" value="{{correo}}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="calTotal">Calorías Totales:</label>
+                        <input type="number" class="form-control" name="calTotal" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="salaAsignada">Sala Asignada:</label>
+                        <select class="form-control" name="salaAsignada" required>
+                            {{#each salas}}
+                            <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha">Fecha:</label>
+                        <input type="date" class="form-control" name="fecha" required>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <button type="submit" class="btn btn-primary">Crear Menú</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

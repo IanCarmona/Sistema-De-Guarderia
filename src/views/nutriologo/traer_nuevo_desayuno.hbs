@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<title>Nutriologo</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <h4>Bienvenido {{name}}</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crearDesayuno">Crear Desayuno</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crearComida">Crear Comida</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crearCena">Crear Merienda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/editarComidas">Editar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crearMenu">Menu</a>
+                    </li>
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <p class="text-danger">Cerrar Sesión</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        <p>{{error}}</p>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <label for="nombreDesayuno">Nombre del desayuno:</label>
+                        <input type="text" class="form-control" id="nombreDesayuno" name="nombreDesayuno" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bebida">Bebida:</label>
+                        <input type="text" class="form-control" id="bebida" name="bebida" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fruta">Fruta:</label>
+                        <input type="text" class="form-control" id="fruta" name="fruta" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="platoFuerte">Plato fuerte:</label>
+                        <input type="text" class="form-control" id="platoFuerte" name="platoFuerte" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cal">Calorías:</label>
+                        <input type="number" class="form-control" id="cal" name="cal" required>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+
+                        <button type="submit" class="btn btn-primary btn-m">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

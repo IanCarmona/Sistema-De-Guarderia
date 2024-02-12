@@ -1,0 +1,147 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<title>Pedagogo</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <h4>Bienvenido {{name}}</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/nuevoGrupo">Crear Sala</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ingresarPersonasGrupo">Ingresar Personas</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <p class="text-danger">Cerrar Sesión</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <br>
+
+
+    <div class="container">
+        <!-- Datos de la Sala -->
+        <h1 class="text-center">Datos de la Sala</h1>
+        <div class="row justify-content-center">
+            {{#if salaData}}
+            {{#each salaData}}
+            <p>Id Sala: {{this.idSala}}</p>
+            <p>Titular: {{this.titular}}</p>
+            <p>Cupo: {{this.cupo}}</p>
+            <p>Hora de inicio: {{this.horaInicio}}</p>
+            <p>Hora de fin: {{this.horaFin}}</p>
+            {{/each}}
+            {{else}}
+            <p>No se encontraron datos de la sala.</p>
+            {{/if}}
+
+            {{#if estudiantesData}}
+            <h2 class="text-center mt-4">Alumnos sin grupo asignado</h2>
+            <form action="/asignarSala" method="post">
+                <!-- Tabla de alumnos -->
+                <table class="table table-striped mt-2">
+                    <thead>
+                        <tr>
+                            <th>Inscribir</th>
+                            <th>ID Alumno</th>
+                            <th>Nombre</th>
+                            <th>Edad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each estudiantesData}}
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="alumnosSeleccionados[]" value="{{this.idAlumno}}"
+                                    onclick="limitSelectionsAlumnos()">
+                            </td>
+                            <td>{{this.idAlumno}}</td>
+                            <td>{{this.nombre}}</td>
+                            <td>{{this.edad}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                <br>
+
+                <!-- Tabla de maestros -->
+                <h2 class="text-center mt-4">Maestros sin Asignar</h2>
+                <table class="table table-striped mt-2">
+                    <thead>
+                        <tr>
+                            <th>Inscribir</th>
+                            <th>ID Maestro</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each profesoresData}}
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="cuidadoresSeleccionados[]" id="auxiliares"
+                                    value="{{this.correo}}">
+                            </td>
+                            <td>{{this.correo}}</td>
+                            <td>{{this.nombre}}</td>
+                            <td>{{this.apPat}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                <input type="hidden" name="idSala" id="idSalaInput" value="{{salaData.[0].idSala}}">
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary">Asignar Grupo</button>
+                </div>
+            </form>
+            {{/if}}
+        </div>
+
+
+    </div>
+
+    <br>
+
+
+    <script>
+        function limitSelectionsAlumnos() {
+            var checkboxes = document.getElementsByName("salaAsignada");
+            var selectedCount = 0;
+            var cupo = parseInt({{ salaData.[0].cupo }}); // Obtener el valor del cupo de la sala
+
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                selectedCount++;
+            }
+        }
+
+        if (selectedCount > cupo) {
+            alert("Limite de grupo alcanzado solo puede ingresar a " + cupo);
+            event.preventDefault(); // Evitar seleccionar más checkboxes que el cupo de la sala
+        }
+            }
+    </script>

@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<title>Nutriologo</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <h4>Bienvenido {{name}}</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/verDiaTutor">Dia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/verMenuTutor">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/verIncidenciasTutor">Incidencias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/agregarFotoTutor">Agregar Foto</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <p class="text-danger">Cerrar Sesión</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <br><br><br>
+
+    <form class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="correo">Correo:</label>
+                    <input type="text" id="correo" class="form-control" name="correo" value="{{ correo }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="idAlumno">ID Alumno:</label>
+                    <input type="text" id="idAlumno" class="form-control" name="idAlumno" value="{{ idAlumno }}" readonly>
+                </div>
+                <div class="form-group">
+
+                    <label for="nombreResponsable" class="form-label mt-4">Nombre del Responsable: "Paterno_Materno_Nombre_Parentesco"</label>
+                    <input class="form-control" accept="image/*" type="file" name='nombreResponsable' id="formFile" required>
+                </div>
+
+                <div class="form-group d-none">
+                    <label for="fotoPath">Foto:</label>
+                    <input type="text" id="fotoPath" class="form-control" name="fotopath" value="/img/" readonly>
+                </div>
+                <br>
+                <div class="row">
+                    <br><br>
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </form>

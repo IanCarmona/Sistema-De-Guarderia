@@ -1,0 +1,119 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<title>Servicio Medico</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <h4>Bienvenido {{name}}</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/nuevoReporteMedico">Reporte</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <p class="text-danger">Cerrar Sesión</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+
+    <div class="container">
+        <h1 class="text-center">Registrar Atención Médica</h1>
+        <br><br>
+        <form action="" method="post">
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="doctor">Doctor</label>
+                        <input type="text" class="form-control" id="doctor" name="doctor" value="{{correoDoctor}}"
+                            readonly required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="paciente">Paciente</label>
+                        <input type="text" class="form-control" id="paciente" name="paciente" value="{{idAlumno}}"
+                            readonly required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha">Fecha</label>
+                        <input type="date" class="form-control" id="fecha" name="fecha" value="{{fecha}}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipoParto">Tipo de Parto</label>
+                        <input type="text" class="form-control" id="tipoParto" name="tipoParto" value="{{tipoParto}}"
+                            readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="alergias">Alergias</label>
+                        <input type="text" class="form-control" id="alergias" name="alergias" value="{{alergias}}"
+                            readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="enfermedades">Enfermedades</label>
+                        <input type="text" class="form-control" id="enfermedades" name="enfermedades"
+                            value="{{enfermedades}}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="peso">Peso</label>
+                        <input type="text" class="form-control" id="peso" name="peso" value="{{peso}}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipoSangre">Tipo de Sangre</label>
+                        <input type="text" class="form-control" id="tipoSangre" name="tipoSangre" value="{{tipoSangre}}"
+                            readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="numReg">Número de Registro</label>
+                        <input type="number" class="form-control" id="numReg" name="numReg" value="{{numReg}}" required
+                            readonly>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="sintomas">Síntomas</label>
+                        <textarea class="form-control" id="sintomas" name="sintomas" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="diagnostico">Diagnóstico</label>
+                        <textarea class="form-control" id="diagnostico" name="diagnostico" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="tratamiento">Tratamiento</label>
+                        <textarea class="form-control" id="tratamiento" name="tratamiento" rows="3" required></textarea>
+                    </div>
+                    <br><br><br><br><br><br>
+                    <div class="row justify-content-center">
+                        <div class="col-3 text-center">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+
+
+    <div>
+        <p>{{error}}</p>
+    </div>

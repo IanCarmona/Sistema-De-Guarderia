@@ -1,0 +1,164 @@
+
+/////////////////////////////////////////////////////////////////////////////////// T2
+
+
+CREATE TABLE empleado (  #listoooooooooo
+    correo VARCHAR(50) PRIMARY KEY NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    apPat VARCHAR(50) NOT NULL,
+    apMat VARCHAR(50),
+    password VARCHAR(255) NOT NULL,
+    telefono VARCHAR(15) NOT NULL,
+    rfc VARCHAR(13) NOT NULL,
+    tipo VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE servicioMedico ( #listoooooooooo
+    correo VARCHAR(50) PRIMARY KEY NOT NULL,
+    cedulaProfesional VARCHAR(15) NOT NULL,
+    FOREIGN KEY (correo) REFERENCES empleado(correo) ON DELETE CASCADE
+);
+
+CREATE TABLE nutriologo ( #listoooooooooo
+    correo VARCHAR(50) PRIMARY KEY NOT NULL,
+    cedulaProfesional VARCHAR(15) NOT NULL,
+    FOREIGN KEY (correo) REFERENCES empleado(correo) ON DELETE CASCADE
+);
+
+CREATE TABLE cuidador ( # listoooooooooo
+    correo VARCHAR(50) PRIMARY KEY NOT NULL,
+    salaAsignada VARCHAR(50) NOT NULL DEFAULT 'NA',
+    FOREIGN KEY (correo) REFERENCES empleado(correo) ON DELETE CASCADE,
+    FOREIGN KEY (salaAsignada) REFERENCES sala(idSala) ON DELETE CASCADE
+);
+
+CREATE TABLE sala ( # listoooooooooo
+    idSala VARCHAR(50) PRIMARY KEY NOT NULL,
+    titular VARCHAR(50) NOT NULL,
+    cupo INT NOT NULL DEFAULT 0,
+    horaInicio TIME,
+    horaFin TIME,
+    FOREIGN KEY (titular) REFERENCES cuidador(correo) ON DELETE CASCADE
+);
+
+CREATE TABLE asistencia ( # listoooooooooo
+    idAlumno VARCHAR(10) NOT NULL,
+    fecha DATE NOT NULL,
+    horaEnt TIME,
+    horaSal TIME,
+    comida1 VARCHAR(15) NOT NULL DEFAULT '-',
+    comida2 VARCHAR(15) NOT NULL DEFAULT '-',
+    comida3 VARCHAR(15) NOT NULL DEFAULT '-',
+    evacuacionesPipi INT NOT NULL DEFAULT 0,
+    evacuacionesPopo INT NOT NULL DEFAULT 0,
+    PRIMARY KEY (Fecha, idAlumno),
+    FOREIGN KEY (idAlumno) REFERENCES alumno(idAlumno) ON DELETE CASCADE
+);
+
+CREATE TABLE alumno ( #listoooooooooo
+    idAlumno VARCHAR(10) PRIMARY KEY NOT NULL, #genera aleatorio
+    nombre VARCHAR(50) NOT NULL,
+    apPat VARCHAR(50) NOT NULL,
+    apMat VARCHAR(50),
+    curp VARCHAR(18) NOT NULL,
+    tipoParto VARCHAR(10) NOT NULL,
+    alergias VARCHAR(100) DEFAULT 'Ninguna',
+    enfermedades VARCHAR(100) DEFAULT 'Ninguna',
+    talla VARCHAR(10) NOT NULL,
+    peso DECIMAL(5,2) NOT NULL,
+    sexo VARCHAR(1) NOT NULL,
+    edad INT NOT NULL,
+    familiograma LONGBLOB,
+    tipoSangre VARCHAR(3) NOT NULL,
+    estudioSocioeconomico LONGBLOB,
+    salaAsignada VARCHAR(50) NOT NULL DEFAULT 'NA', # lo hace el pedagogo
+    FOREIGN KEY (salaAsignada) REFERENCES sala(idSala) ON DELETE CASCADE
+);
+
+CREATE TABLE tutor ( # listoooooooooo
+    correo VARCHAR(50) NOT NULL,
+    idAlumno VARCHAR(10) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    apPat VARCHAR(50) NOT NULL,
+    apMat VARCHAR(50),
+    domicilio VARCHAR(100) NOT NULL,
+    rfc VARCHAR(13),
+    tel1 VARCHAR(15) NOT NULL,
+    tel2 VARCHAR(15) NOT NULL,
+    tel3 VARCHAR(15),
+    PRIMARY KEY (correo, idAlumno),
+    FOREIGN KEY (idAlumno) REFERENCES alumno(idAlumno) ON DELETE CASCADE
+);
+
+CREATE TABLE fotoResponsables( # adentro de tutor se lo puedes pedir
+    correo VARCHAR(50) NOT NULL,
+    idAlumno VARCHAR(10) NOT NULL,
+    nombreResponsable VARCHAR(255),
+    fotoPath VARCHAR(255),
+    PRIMARY KEY (correo, idAlumno, nombreResponsable),
+    FOREIGN KEY (idAlumno) REFERENCES tutor(idAlumno) ON DELETE CASCADE,
+    FOREIGN KEY (correo) REFERENCES tutor(correo) ON DELETE CASCADE
+);
+
+CREATE TABLE eventos ( # listoooooooooo 
+    fecha DATE NOT NULL,
+    nombreEv VARCHAR(100) NOT NULL,
+    salaAsignada VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(200) NOT NULL,
+    responsable VARCHAR(50) NOT NULL,
+    PRIMARY KEY (fecha, nombreEv, salaAsignada),
+    FOREIGN KEY (responsable) REFERENCES empleado(correo) ON DELETE CASCADE,
+    FOREIGN KEY (salaAsignada) REFERENCES sala(idSala) ON DELETE CASCADE
+);
+
+CREATE TABLE atencionMedica ( # listoooooooooo
+    doctor VARCHAR(50) NOT NULL,
+    paciente VARCHAR(10) NOT NULL,
+    fecha DATE NOT NULL,
+    numReg INT PRIMARY KEY NOT NULL,
+    sintomas VARCHAR(200) NOT NULL,
+    diagnostico VARCHAR(200) NOT NULL,
+    tratamiento VARCHAR(200) NOT NULL,
+    FOREIGN KEY (doctor) REFERENCES servicioMedico(correo) ON DELETE CASCADE,
+    FOREIGN KEY (paciente) REFERENCES alumno(idAlumno) ON DELETE CASCADE
+);
+
+CREATE TABLE desayuno ( listoooooooooo
+    nombreDesayuno VARCHAR(20) PRIMARY KEY NOT NULL,
+    bebida VARCHAR(50) NOT NULL,
+    fruta VARCHAR(50) NOT NULL,
+    platoFuerte VARCHAR(50) NOT NULL,
+    cal INT NOT NULL
+);
+
+CREATE TABLE comida ( listoooooooooo
+    nombreComida VARCHAR(20) PRIMARY KEY NOT NULL,
+    bebida VARCHAR(20) NOT NULL,
+    platoFuerte VARCHAR(50) NOT NULL,
+    postre VARCHAR(50) NOT NULL,
+    cal INT NOT NULL
+);
+
+CREATE TABLE merienda ( listoooooooooo
+    nombreMerienda VARCHAR(20) PRIMARY KEY NOT NULL,
+    bebida VARCHAR(50) NOT NULL,
+    snack VARCHAR(50) NOT NULL,
+    cal INT NOT NULL
+);
+
+CREATE TABLE menu( listoooooooooo
+    desayuno VARCHAR(20) NOT NULL,
+    comida VARCHAR(20) NOT NULL,
+    merienda VARCHAR(20) NOT NULL,
+    nutriologo VARCHAR(50) NOT NULL,
+    calTotal INT NOT NULL,
+    salaAsignada VARCHAR(50) NOT NULL,
+    fecha DATE NOT NULL,
+    PRIMARY KEY(salaAsignada,fecha),
+    FOREIGN KEY (desayuno) REFERENCES desayuno(nombreDesayuno) ON DELETE CASCADE,
+    FOREIGN KEY (comida) REFERENCES comida(nombreComida) ON DELETE CASCADE,
+    FOREIGN KEY (merienda) REFERENCES merienda(nombreMerienda) ON DELETE CASCADE,
+    FOREIGN KEY (nutriologo) REFERENCES nutriologo(correo) ON DELETE CASCADE,
+    FOREIGN KEY (salaAsignada) REFERENCES sala(idSala) ON DELETE CASCADE
+);

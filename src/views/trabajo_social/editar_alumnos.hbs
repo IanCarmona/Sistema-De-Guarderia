@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<title>Trabajo Social</title>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <h4>{{name}}</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/nuevoAlumno">Nuevo Alumno</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/editarAlumno">Editar Alumno</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <p class="text-danger">Cerrar Sesión</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <style>
+        html,
+        body {
+            height: 87%;
+
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+
+        }
+    </style>
+
+    <div class="container">
+
+        {{#if error}}
+        <p class="text-center">{{error}}</p>
+        {{else}}
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Matricula</th>
+                        <th>Nombre</th>
+                        <th>ApPat</th>
+                        <th>ApMat</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each userdata}}
+                    <tr>
+                        <td>{{this.idAlumno}}</td>
+                        <td>{{this.nombre}}</td>
+                        <td>{{this.apPat}}</td>
+                        <td>{{this.apMat}}</td>
+                        <td><a href="/editarAlumno/{{this.idAlumno}}"><img src="/img/actualizar.png"></a></td>
+                        <td><a href="/eliminarAlumno/{{this.idAlumno}}"><img src="/img/eliminar.png"></a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        {{/if}}
+    </div>

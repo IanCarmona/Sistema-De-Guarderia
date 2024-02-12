@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<title>Capital Humano</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <h4>Bienvenido {{name}}</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/nuevo_empleado">Nuevo Empleado</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">Editar Empleado</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/editar_empleado?tipo=capitalHumano">Capital Humano</a>
+                            <a class="dropdown-item" href="/editar_empleado?tipo=cuidador">Cuidador</a>
+                            <a class="dropdown-item" href="/editar_empleado?tipo=nutriologo">Nutriologo</a>
+                            <a class="dropdown-item" href="/editar_empleado?tipo=secretaria">Secretaria</a>
+                            <a class="dropdown-item" href="/editar_empleado?tipo=servicioMedico">Servicio Medico</a>
+                            <a class="dropdown-item" href="/editar_empleado?tipo=trabajadorSocial">Trabajo Social</a>
+                            <a class="dropdown-item" href="/editar_empleado?tipo=pedagogo">Pedagogo</a>
+                        </div>
+                    </li>
+
+                    <script>
+                        // Obtener referencia al enlace del menú desplegable
+                        const dropdownLink = document.querySelector('.nav-link.dropdown-toggle');
+
+                        // Obtener referencia al menú desplegable
+                        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+                        // Agregar un controlador de eventos al enlace del menú desplegable
+                        dropdownLink.addEventListener('click', function () {
+                            // Alternar la clase 'show' en el menú desplegable
+                            dropdownMenu.classList.toggle('show');
+                        });
+
+                    </script>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <p class="text-danger">Cerrar Sesión</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div><p>{{error}}</p></div>
+
+

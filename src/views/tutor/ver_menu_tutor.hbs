@@ -1,0 +1,129 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<title>Nutriologo</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <h4>Bienvenido {{name}}</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/verDiaTutor">Dia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/verMenuTutor">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/verIncidenciasTutor">Incidencias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/agregarFotoTutor">Agregar Foto</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <p class="text-danger">Cerrar Sesión</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<br>
+
+
+
+
+    <div class="container">
+        <h1 class="text-center">Menú del día</h1>
+
+        <!-- tutor/ver_menu_tutor.hbs -->
+
+            <!-- Tabla de Desayuno -->
+            <h3>Desayuno</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Desayuno</th>
+                        <th>Bebida</th>
+                        <th>Fruta</th>
+                        <th>Plato Fuerte</th>
+                        <th>Calorías</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each menu}}
+                    <tr>
+                        <td>{{this.desayuno}}</td>
+                        <td>{{this.desayuno_bebida}}</td>
+                        <td>{{this.desayuno_fruta}}</td>
+                        <td>{{this.desayuno_platoFuerte}}</td>
+                        <td>{{this.desayuno_cal}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+            <!-- Tabla de Comida -->
+            <h3>Comida</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Comida</th>
+                        <th>Bebida</th>
+                        <th>Plato Fuerte</th>
+                        <th>Postre</th>
+                        <th>Calorías</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each menu}}
+                    <tr>
+                        <td>{{this.comida}}</td>
+                        <td>{{this.comida_bebida}}</td>
+                        <td>{{this.comida_platoFuerte}}</td>
+                        <td>{{this.comida_postre}}</td>
+                        <td>{{this.comida_cal}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+            <!-- Tabla de Merienda -->
+            <h3>Merienda</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Merienda</th>
+                        <th>Bebida</th>
+                        <th>Snack</th>
+                        <th>Calorías</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each menu}}
+                    <tr>
+                        <td>{{this.merienda}}</td>
+                        <td>{{this.merienda_bebida}}</td>
+                        <td>{{this.merienda_snack}}</td>
+                        <td>{{this.merienda_cal}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
